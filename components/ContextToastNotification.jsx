@@ -1,12 +1,21 @@
+"use client"
+
 import { useToast } from "./ToastContext"
 
-const TriggerContextNotification = () => {
+const TriggerContextNotification = ({ label, message, type}) => {
     const { addToast } = useToast();
 
+    const bgColor = {
+        info: 'bg-blue-400',
+        success: 'bg-green-400',
+        warning: 'bg-yellow-400',
+        error: 'bg-red-400'
+    }[type] || 'bg-gray-400';
+
     return (
-        <button onClick={() => addToast('Task Completed!', 'success', 3000)}
-            className="bg-blue-500 text-white p-2 rounded">
-                Show Toast
+        <button onClick={() => addToast(message, type, 3000)}
+            className={`${bgColor} text-white p-2 rounded mx-2`}>
+                {label}
             </button>
     )
 }

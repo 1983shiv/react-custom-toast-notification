@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState } from 'react';
 const ToastContext = createContext();
 
 export const ToastProvider = ({ children}) => {
-    const [toasts, setToasts] = useState(null);
+    const [toasts, setToasts] = useState([]);
 
     const addToast = (message, type='info', duration=300) => {
         const id = Date.now()
